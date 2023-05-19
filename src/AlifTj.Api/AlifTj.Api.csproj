@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,6 +8,15 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AlifTj.Service\AlifTj.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Middleweares\" />
+    <Folder Include="Configurationts\" />
   </ItemGroup>
 
 </Project>
