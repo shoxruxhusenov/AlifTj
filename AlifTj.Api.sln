@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BB81F064-844B-4097-8673-AFCC93FFE51C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{77AD0881-83E3-4AD4-A93A-F981BEA8E9C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlifTj.Api", "src\AlifTj.Api\AlifTj.Api.csproj", "{036307C4-9458-4A21-8457-9DD2545C1F97}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlifTj.DataAccess", "src\AlifTj.DataAccess\AlifTj.DataAccess.csproj", "{249FB097-4CA4-41EC-9FCD-E75B8010F0CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlifTj.Domain", "src\AlifTj.Domain\AlifTj.Domain.csproj", "{8F81CFCF-EF8C-4875-9EF8-9BCF1ADFDE04}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlifTj.Service", "src\AlifTj.Service\AlifTj.Service.csproj", "{F0771C47-2C15-4F18-B3E8-BEC9A9571B4F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AlifTj.UnitTest", "test\AlifTj.UnitTest\AlifTj.UnitTest.csproj", "{143876C7-0994-4A9F-885B-22C6C5C2493C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{036307C4-9458-4A21-8457-9DD2545C1F97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{036307C4-9458-4A21-8457-9DD2545C1F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{036307C4-9458-4A21-8457-9DD2545C1F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{036307C4-9458-4A21-8457-9DD2545C1F97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{249FB097-4CA4-41EC-9FCD-E75B8010F0CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{249FB097-4CA4-41EC-9FCD-E75B8010F0CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{249FB097-4CA4-41EC-9FCD-E75B8010F0CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{249FB097-4CA4-41EC-9FCD-E75B8010F0CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F81CFCF-EF8C-4875-9EF8-9BCF1ADFDE04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F81CFCF-EF8C-4875-9EF8-9BCF1ADFDE04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F81CFCF-EF8C-4875-9EF8-9BCF1ADFDE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F81CFCF-EF8C-4875-9EF8-9BCF1ADFDE04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0771C47-2C15-4F18-B3E8-BEC9A9571B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0771C47-2C15-4F18-B3E8-BEC9A9571B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0771C47-2C15-4F18-B3E8-BEC9A9571B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0771C47-2C15-4F18-B3E8-BEC9A9571B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{143876C7-0994-4A9F-885B-22C6C5C2493C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{143876C7-0994-4A9F-885B-22C6C5C2493C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{143876C7-0994-4A9F-885B-22C6C5C2493C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{143876C7-0994-4A9F-885B-22C6C5C2493C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{036307C4-9458-4A21-8457-9DD2545C1F97} = {BB81F064-844B-4097-8673-AFCC93FFE51C}
+		{249FB097-4CA4-41EC-9FCD-E75B8010F0CE} = {BB81F064-844B-4097-8673-AFCC93FFE51C}
+		{8F81CFCF-EF8C-4875-9EF8-9BCF1ADFDE04} = {BB81F064-844B-4097-8673-AFCC93FFE51C}
+		{F0771C47-2C15-4F18-B3E8-BEC9A9571B4F} = {BB81F064-844B-4097-8673-AFCC93FFE51C}
+		{143876C7-0994-4A9F-885B-22C6C5C2493C} = {77AD0881-83E3-4AD4-A93A-F981BEA8E9C1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3229E507-FDA6-412D-A22C-0C8614DBA9C1}
+	EndGlobalSection
+EndGlobal
