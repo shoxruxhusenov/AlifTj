@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection.Metadata;
 
 namespace AlifTj.Domain.Entities.Orders
 {
@@ -19,7 +20,6 @@ namespace AlifTj.Domain.Entities.Orders
 
         public double PriceProduct { get; set; }
 
-        public long Persent { get; set; }
-        
+        public long MonthKredit { get;set; }
     }
 }
