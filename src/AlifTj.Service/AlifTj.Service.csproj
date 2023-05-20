@@ -9,9 +9,6 @@
   <ItemGroup>
     <Folder Include="Common\Validations\" />
     <Folder Include="Common\Utals\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,6 @@
 using AlifTj.Api.Configurationts;
+using AlifTj.Service.Interfaces;
+using AlifTj.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
+builder.ConfigureDataAccess();
+
+builder.Services.AddScoped<IUserService, UserService>();
+
 builder.ConfigureDataAccess();
 
 var app = builder.Build();
