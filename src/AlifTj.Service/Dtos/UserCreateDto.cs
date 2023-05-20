@@ -1,5 +1,6 @@
 ﻿using AlifTj.Domain.Entities.Users;
 using AlifTj.Service.Common.Attributes;
+using AlifTj.Service.Common.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,8 +16,12 @@ namespace AlifTj.Service.Dtos
         [StringLength(40, MinimumLength = 5, ErrorMessage = "The Title should be minimum 5 and maximum 50 characters.")]
         public string UserName { get; set; } = String.Empty;
 
-        [Required, PhoneNumber]
+
+        [Required(ErrorMessage = "Phone Number is required")]
+        [PhoneNumber(ErrorMessage = "Please enter a valid phone number")]
         public string PhoneNumber { get; set; } = String.Empty;
+
+
 
         public static implicit operator User(UserCreateDto userCreateDto)
         {
@@ -24,6 +29,8 @@ namespace AlifTj.Service.Dtos
             {
                 UserName= userCreateDto.UserName,
                 PhoneNumber= userCreateDto.PhoneNumber,
+                CreatedAt=TimeHelper.GetCurrentServerTime(),
+                UpdatedAt=TimeHelper.GetCurrentServerTime()
             };
         }
     }
