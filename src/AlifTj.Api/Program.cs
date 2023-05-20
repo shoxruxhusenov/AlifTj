@@ -13,6 +13,8 @@ builder.Services.AddHttpContextAccessor();
 builder.ConfigureDataAccess();
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.ConfigureDataAccess();
 

@@ -13,7 +13,7 @@ namespace AlifTj.Service.Dtos
     public class UserCreateDto
     {
         [Required]
-        [StringLength(40, MinimumLength = 5, ErrorMessage = "The Title should be minimum 5 and maximum 50 characters.")]
+        [StringLength(40, MinimumLength = 5, ErrorMessage = "Заголовок должен состоять минимум из 5 и максимум из 40 символов.")]
         public string UserName { get; set; } = String.Empty;
 
 

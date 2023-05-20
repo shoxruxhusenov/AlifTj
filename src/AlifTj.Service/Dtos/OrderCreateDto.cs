@@ -1,4 +1,5 @@
-﻿using AlifTj.DataAccess.Repositories;
+﻿using AlifTj.DataAccess.DbContexts;
+using AlifTj.DataAccess.Repositories;
 using AlifTj.Domain.Entities.Orders;
 using AlifTj.Domain.Entities.Product;
 using AlifTj.Domain.Entities.Users;
@@ -26,15 +27,15 @@ namespace AlifTj.Service.Dtos
         [Required, MonthCheck]
         public long Month { get; set; }
 
-        public static implicit operator Order(OrderCreateDto orderCreateDto)
-        {
-            UnitOfWork unitOf= new UnitOfWork(new DataAccess.DbContexts.AppDbContext());
-            return new Order()
-            {
-                ProductId = unitOf.Products.GetAll().FirstOrDefault(x => x.Name == orderCreateDto.NameProduct)!.Id,
-                UserId = unitOf.Users.GetAll().FirstOrDefault(x => x.UserName == orderCreateDto.PhoneNumbers)!.Id,
-                MonthKredit = orderCreateDto.Month,
-            };
-        }
+        //public static implicit operator Order(OrderCreateDto orderCreateDto)
+        //{
+        //    UnitOfWork unitOf= new UnitOfWork(new AppDbContext());
+        //    return new Order()
+        //    {
+        //        ProductId = unitOf.Products.GetAll().FirstOrDefault(x => x.Name == orderCreateDto.NameProduct)!.Id,
+        //        UserId = unitOf.Users.GetAll().FirstOrDefault(x => x.UserName == orderCreateDto.PhoneNumbers)!.Id,
+        //        MonthKredit = orderCreateDto.Month,
+        //    };
+        //}
     }
 }

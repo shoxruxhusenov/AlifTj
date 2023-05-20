@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AlifTj.Domain.Entities.Product
 {
-    public class Products : Auditable
+    public class Product : Auditable
     {
         public string Name { get; set; }=String.Empty;
 
@@ -16,7 +16,7 @@ namespace AlifTj.Domain.Entities.Product
 
         public long Percent { get; set; }
         
-        public long TypeId { get; set; }
+        public long ProductTypeId { get; set; }
         public virtual ProductType ProductType { get; set; } = default!;
     }
 }

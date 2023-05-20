@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AlifTj.DataAccess.Repositories.Productes
 {
-    public class ProductRepository: GenericRepository<Products>, IProductRepositoriy
+    public class ProductRepository: GenericRepository<Product>, IProductRepositoriy
     {
         public ProductRepository(AppDbContext context):base(context) { }
     }
