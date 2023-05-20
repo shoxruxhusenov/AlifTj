@@ -14,7 +14,7 @@ namespace AlifTj.Domain.Entities.Product
 
         public double Price { get; set; }
 
-        public long Persent { get; set; }
+        public long Percent { get; set; }
         
         public long TypeId { get; set; }
         public virtual ProductType ProductType { get; set; } = default!;

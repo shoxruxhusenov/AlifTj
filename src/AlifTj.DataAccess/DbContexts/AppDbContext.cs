@@ -9,6 +9,10 @@ namespace AlifTj.DataAccess.DbContexts;
 
 public class AppDbContext:DbContext
 {
+    public AppDbContext()
+    {
+    }
+
     public AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) 
         : base(dbContextOptions)
     {

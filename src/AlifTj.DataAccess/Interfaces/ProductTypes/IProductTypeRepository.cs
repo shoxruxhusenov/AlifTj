@@ -1,4 +1,5 @@
-﻿using AlifTj.Domain.Entities.ProductTypes;
+﻿using AlifTj.Domain.Entities.Product;
+using AlifTj.Domain.Entities.ProductTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AlifTj.DataAccess.Interfaces.ProductTypes
 {
-    public interface IProductTypeRepository:IRepository<ProductType>
+    public interface IProductTypeRepository: IGenericRepository<ProductType>
     {
         
     }

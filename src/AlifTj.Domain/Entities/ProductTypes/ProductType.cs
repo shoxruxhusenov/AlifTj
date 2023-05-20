@@ -10,5 +10,6 @@ namespace AlifTj.Domain.Entities.ProductTypes
     public class ProductType:Auditable
     {
         public string TypeName { get ; set; }=String.Empty;
+
     }
 }
