@@ -5,23 +5,25 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AlifTj.Api.Controllers;
 
+
 [ApiController]
 [Route("[controller]")]
-public class UserController : ControllerBase
-{
-    private readonly IUserService _userService;
 
-    public UserController(IUserService userService)
+public class ProductTypeController : ControllerBase
+{
+    private readonly IProductTypeService _service;
+
+    public ProductTypeController(IProductTypeService service)
     {
-        _userService = userService;
+        _service = service;
     }
 
     [HttpPost("Create")]
-    public async Task<IActionResult> CreateAsync([FromForm] UserCreateDto dto)
+    public async Task<IActionResult> CreateAsync([FromForm] ProductTypeCreateDto dto)
     {
         try
         {
-            var result = await _userService.CreateAsync(dto);
+            var result = await _service.CreateAsync(dto);
 
             return Ok(result);
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AlifTj.DataAccess.Interfaces.Productes
 {
-    public interface IProductRepositoriy:IGenericRepository<Products>
+    public interface IProductRepositoriy:IGenericRepository<Product>
     {
     }
 }

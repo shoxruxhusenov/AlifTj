@@ -9,17 +9,14 @@ namespace AlifTj.DataAccess.DbContexts;
 
 public class AppDbContext:DbContext
 {
-    public AppDbContext()
-    {
-    }
-
-    public AppDbContext(DbContextOptions<AppDbContext> dbContextOptions) 
+    public AppDbContext(DbContextOptions<AppDbContext> dbContextOptions)
         : base(dbContextOptions)
     {
     }
+
     public virtual DbSet<User> Users { get; set; } = default!;
     public virtual DbSet<Order> Orders { get; set; }= default!; 
     public virtual DbSet<ProductType> ProductTypes { get; set; } = default!;
-    public virtual DbSet<Products> Products { get; set; }=default!;
+    public virtual DbSet<Product> Products { get; set; }=default!;
 
 }

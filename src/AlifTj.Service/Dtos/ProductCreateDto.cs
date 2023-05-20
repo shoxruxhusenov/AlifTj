@@ -24,18 +24,5 @@ namespace AlifTj.Service.Dtos
         [Required]
         public string TypeName { get; set; } = string.Empty;
 
-        public static implicit operator Products(ProductCreateDto product)
-        {
-            UnitOfWork work = new UnitOfWork(new AppDbContext());
-
-            return new Products()
-            {
-                Name = product.Name,
-                Price = product.Price,
-                Percent = product.Percent,
-                TypeId = work.ProductTypes.GetAll().FirstOrDefault(x => x.TypeName == product.TypeName)!.Id,
-            };
-        }
-
     }
 }

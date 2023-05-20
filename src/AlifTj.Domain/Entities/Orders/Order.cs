@@ -13,7 +13,7 @@ namespace AlifTj.Domain.Entities.Orders
     public class Order : Auditable
     {
         public long ProductId { get; set; }
-        public virtual Products Product { get; set; } = default!;
+        public virtual Product.Product Product { get; set; } = default!;
 
         public long UserId { get; set; }
         public virtual User User { get; set; } = default!;
