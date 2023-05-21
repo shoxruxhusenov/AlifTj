@@ -17,8 +17,8 @@ namespace AlifTj.Service.Dtos
         public string UserName { get; set; } = String.Empty;
 
 
-        [Required(ErrorMessage = "Phone Number is required")]
-        [PhoneNumber(ErrorMessage = "Please enter a valid phone number")]
+        [Required(ErrorMessage = "Требуется номер телефона")]
+        [PhoneNumber(ErrorMessage = "Пожалуйста, введите действующий телефонный номер")]
         public string PhoneNumber { get; set; } = String.Empty;
 
 

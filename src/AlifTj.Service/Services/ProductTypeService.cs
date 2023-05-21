@@ -28,7 +28,7 @@ namespace AlifTj.Service.Services
         public async Task<bool> CreateAsync(ProductTypeCreateDto createDto)
         {
             var entity = await _unitOfWork.ProductTypes.FirstOrDefaultAsync(x => x.TypeName == createDto.TypeName);
-            if (entity != null)
+            if (entity != null )
                 throw new StatusCodeException(HttpStatusCode.Conflict, "это Product Type уже существует");
 
             var type = (ProductType)createDto;
