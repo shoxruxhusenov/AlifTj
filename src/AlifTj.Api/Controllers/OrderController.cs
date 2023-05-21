@@ -31,4 +31,36 @@ public class OrderController : ControllerBase
 
         }
     }
+
+
+    [HttpDelete("Delete")]
+    public async Task<IActionResult> DeleteAsync(long id)
+    {
+        try
+        {
+            var result = await _service.DeleteAsync(id);
+            return Ok(result);
+        }
+        catch
+        {
+            throw new StatusCodeException(System.Net.HttpStatusCode.Unauthorized, "У вас нет доступа");
+
+        }
+    }
+
+    [HttpGet("GetAll")]
+    public async Task<IActionResult> GetAllAsync()
+    {
+
+        try
+        {
+            var get = await _service.GetAllAsync();
+            return Ok(get);
+        }
+        catch
+        {
+            throw new StatusCodeException(System.Net.HttpStatusCode.Unauthorized, "Что-то пошло не так, проверьте информацию");
+
+        }
+    }
 }

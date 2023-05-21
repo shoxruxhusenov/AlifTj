@@ -57,8 +57,31 @@ public class ProductService : IProductService
     }
     
 
-    public Task<bool> DeleteAsync(long id) => throw new NotImplementedException();
-    public Task<IEnumerable<ProductViewModel>> GetAllAsync() => throw new NotImplementedException();
+    public async Task<bool> DeleteAsync(long id)
+    {
+        var delete = await _unitOfWork.Products.FindByIdAsync(id);
+        if (delete != null)
+        {
+            _unitOfWork.Products.Delete(id);
+            var result = await _unitOfWork.SaveChangesAsync();
+            return result > 0;
+        }
+        else throw new StatusCodeException(HttpStatusCode.NotFound, "Product not found");
+
+    }
+    public async Task<IEnumerable<ProductViewModel>> GetAllAsync()
+    {
+        var product = _unitOfWork.Products.GetAll();
+        return product.Select(product => new ProductViewModel()
+        {
+            Id=product.Id,
+            Name= product.Name,
+            Price = product.Price,
+            Percent = product.Percent,
+            TypeName=product.ProductTypeId.ToString(),
+
+        });
+    }
     public Task<ProductViewModel> GetByIdAsync(long id) => throw new NotImplementedException();
     public Task<bool> UpdateAsync(long id, ProductCreateDto productCreateDto) => throw new NotImplementedException();
 }
