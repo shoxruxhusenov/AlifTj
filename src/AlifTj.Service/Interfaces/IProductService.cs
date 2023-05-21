@@ -14,7 +14,6 @@ namespace AlifTj.Service.Interfaces
         public Task<IEnumerable<ProductViewModel>> GetAllAsync();
         public Task<ProductViewModel> GetByIdAsync(long id);
         public Task<bool> CreateAsync(ProductCreateDto productCreateDto);
-        public Task<bool> UpdateAsync(long id, ProductCreateDto productCreateDto);
         public Task<bool> DeleteAsync(long id);
     }
 }

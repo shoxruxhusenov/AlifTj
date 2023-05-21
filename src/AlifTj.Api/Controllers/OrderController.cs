@@ -23,11 +23,11 @@ public class OrderController : ControllerBase
         {
             var result = await _service.CreateAsync(dto);
 
-            return Ok(result);
+            return Ok($"{result.Item1}\n{result.Item2}");
         }
-        catch (StatusCodeException ex)
+        catch
         {
-            return StatusCode((int)ex.StatusCode, ex.Message);
+            throw new StatusCodeException(System.Net.HttpStatusCode.Unauthorized, "Введенная вами информация добавлена ​​в базу данных \"Но ваш лимит на отправку SMS-сообщений на номер телефона истек");
 
         }
     }
