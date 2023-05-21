@@ -15,12 +15,13 @@ using System.Text;
 using System.Threading.Tasks;
 using AlifTj.DataAccess.Interfaces.Productes;
 using Microsoft.EntityFrameworkCore;
+using AlifTj.Service.Common.Helpers;
 
 namespace AlifTj.Service.Services;
 
 public class ProductService : IProductService
 {
-    
+
     private readonly IUnitOfWork _unitOfWork;
 
     public ProductService(IUnitOfWork unitOfWork)
@@ -33,19 +34,26 @@ public class ProductService : IProductService
     {
         var uni = _unitOfWork.ProductTypes.GetAll().FirstOrDefault(x => x.TypeName == productDto.TypeName)!.Id;
 
-        var product = new Product()
+       
+        if (productDto.Percent >= 3 && productDto.Percent <= 5) 
         {
-            Name = productDto.Name,
-            Price = productDto.Price,
-            Percent = productDto.Percent,
-            ProductTypeId = uni
-        };
+            var product = new Product()
+            {
+                Name = productDto.Name,
+                Price = productDto.Price,
+                Percent = productDto.Percent,
+                ProductTypeId = uni,
+                CreatedAt = TimeHelper.GetCurrentServerTime(),
+                UpdatedAt = TimeHelper.GetCurrentServerTime()
+            };
 
-        var res = product;
-        _unitOfWork.Products.Add(res);  
+            var res1 = product;
+            _unitOfWork.Products.Add(res1);
 
-        var result = await _unitOfWork.SaveChangesAsync();
-        return result > 0;
+            var result = await _unitOfWork.SaveChangesAsync();
+            return result > 0;
+        }
+        throw new ArgumentException("Можно ввести только 3% 4% 5% иначе не возможно войти");
     }
     
 

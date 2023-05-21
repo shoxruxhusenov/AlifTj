@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,18 +25,13 @@ namespace AlifTj.Service.Dtos
         [Required]
         public string PhoneNumbers { get; set; }= string.Empty;
 
-        [Required, MonthCheck]
+        [Required]
+        public double Price { get;set; }
+
+        [Required(ErrorMessage = "Запись месяца должна быть между 3 месяцами и 6-9-12-18-24 месяцами")]
         public long Month { get; set; }
 
-        //public static implicit operator Order(OrderCreateDto orderCreateDto)
-        //{
-        //    UnitOfWork unitOf= new UnitOfWork(new AppDbContext());
-        //    return new Order()
-        //    {
-        //        ProductId = unitOf.Products.GetAll().FirstOrDefault(x => x.Name == orderCreateDto.NameProduct)!.Id,
-        //        UserId = unitOf.Users.GetAll().FirstOrDefault(x => x.UserName == orderCreateDto.PhoneNumbers)!.Id,
-        //        MonthKredit = orderCreateDto.Month,
-        //    };
-        //}
+       
+      
     }
 }
