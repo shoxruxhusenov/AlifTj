@@ -12,6 +12,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace AlifTj.Service.Services
 {
@@ -37,8 +38,28 @@ namespace AlifTj.Service.Services
             var result = await _unitOfWork.SaveChangesAsync();
             return result > 0;
         }   
-        public Task<bool> DeleteAsync(long id) => throw new NotImplementedException();
-        public Task<IEnumerable<ProductTypeViewModel>> GetAllAsync() => throw new NotImplementedException();
+        public async Task<bool> DeleteAsync(long id)
+        {
+            var delete = await _unitOfWork.ProductTypes.FindByIdAsync(id);
+            if(delete != null)
+            {
+                _unitOfWork.ProductTypes.Delete(id);
+                var result=await _unitOfWork.SaveChangesAsync();
+                return result > 0;
+            }
+            else throw new StatusCodeException(HttpStatusCode.NotFound, "TypeProduct not found");
+
+        }
+
+        public async Task<IEnumerable<ProductTypeViewModel>> GetAllAsync()
+        {
+            var result = _unitOfWork.ProductTypes.GetAll();
+            return result.Select(result => new ProductTypeViewModel
+            {
+                Id=result.Id,
+                Type=result.TypeName
+            });
+        }
         public Task<ProductTypeViewModel> GetByIdAsync(long Id) => throw new NotImplementedException();
         public Task<bool> UpdateAsync(long id, ProductTypeCreateDto productCreateDto) => throw new NotImplementedException();
     }

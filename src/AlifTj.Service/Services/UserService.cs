@@ -34,8 +34,30 @@ namespace AlifTj.Service.Services
             var result = await _work.SaveChangesAsync();
             return result > 0;
         }
-        public Task<bool> DeleteAsync(long id) => throw new NotImplementedException();
-        public Task<IEnumerable<UserViewModel>> GetAllAsync() => throw new NotImplementedException();
+        public async Task<bool> DeleteAsync(long id)
+        {
+            var delete=await _work.Users.FindByIdAsync(id);
+            if(delete != null)
+            {
+                _work.Users.Delete(id);
+                var result = await _work.SaveChangesAsync();
+                return result > 0;
+            }
+            else throw new StatusCodeException(HttpStatusCode.NotFound, "User not found");
+
+        }
+
+        public async Task<IEnumerable<UserViewModel>> GetAllAsync()
+        {
+            var query = _work.Users.GetAll();
+            return query.Select(query => new UserViewModel
+            {
+               Id=query.Id,
+               Name=query.UserName,
+               PhoneNumber=query.PhoneNumber,
+            });
+
+        }
         public Task<UserViewModel> GetAsyncById(long id) => throw new NotImplementedException();
         public Task<bool> UpdateAsync(long id, UserCreateDto dto) => throw new NotImplementedException();
     }

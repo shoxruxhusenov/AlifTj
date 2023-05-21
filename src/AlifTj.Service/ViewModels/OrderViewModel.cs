@@ -8,7 +8,7 @@ namespace AlifTj.Service.ViewModels
 {
     public class OrderViewModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public string ProductName { get; set; }=string.Empty;
 
@@ -17,5 +17,6 @@ namespace AlifTj.Service.ViewModels
         public double ProductPrice { get; set; }
 
         public long Month { get; set;}
+
     }
 }
