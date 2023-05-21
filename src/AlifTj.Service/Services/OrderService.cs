@@ -109,7 +109,7 @@ namespace AlifTj.Service.Services
             if (isSaved)
             {
                 return (true, await SendMessageInfoAsync(purpose));
-                throw new ArgumentException("Qoshildi");
+                throw new ArgumentException(" not found");
             }
             else
                 throw new Exception("Something went wrong");
