@@ -61,6 +61,6 @@ namespace AlifTj.Service.Services
             });
         }
         public Task<ProductTypeViewModel> GetByIdAsync(long Id) => throw new NotImplementedException();
-        public Task<bool> UpdateAsync(long id, ProductTypeCreateDto productCreateDto) => throw new NotImplementedException();
+        
     }
 }

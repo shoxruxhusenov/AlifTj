@@ -58,7 +58,5 @@ namespace AlifTj.Service.Services
             });
 
         }
-        public Task<UserViewModel> GetAsyncById(long id) => throw new NotImplementedException();
-        public Task<bool> UpdateAsync(long id, UserCreateDto dto) => throw new NotImplementedException();
     }
 }

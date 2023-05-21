@@ -25,7 +25,7 @@ namespace AlifTj.Service.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<bool> CreateAsync(OrderCreateDto orderCreateDto)
+        public async Task<(bool,string)> CreateAsync(OrderCreateDto orderCreateDto)
         {
             var product = _unitOfWork.Products.GetAll().FirstOrDefault(x => x.Name == orderCreateDto.NameProduct)
                 ?? throw new ArgumentException("Товар не найден");
@@ -92,10 +92,7 @@ namespace AlifTj.Service.Services
             else
                 throw new ArgumentException("Пожалуйста, проверьте, правильно ли введен процент <Страница продукта> 3% 4% 5% !!!");
 
-
-
-
-            _unitOfWork.Orders.Add(new Order
+            var purpose = new Order()
             {
                 ProductId = product.Id,
                 UserId = user.Id,
@@ -103,9 +100,20 @@ namespace AlifTj.Service.Services
                 MonthKredit = orderCreateDto.Month,
                 CreatedAt = TimeHelper.GetCurrentServerTime(),
                 UpdatedAt = TimeHelper.GetCurrentServerTime()
-            });
+            };
 
-            return await _unitOfWork.SaveChangesAsync() > 0;
+
+            _unitOfWork.Orders.Add(purpose);
+
+            var isSaved = await _unitOfWork.SaveChangesAsync() > 0;
+            if (isSaved)
+            {
+                return (true, await SendMessageInfoAsync(purpose));
+                throw new ArgumentException(" not found");
+            }
+            else
+                throw new Exception("Something went wrong");
+
         }
         public async Task<bool> DeleteAsync(long id)
         {
@@ -130,8 +138,30 @@ namespace AlifTj.Service.Services
                 Month=order.MonthKredit,
             });
         }
-        public Task<OrderViewModel> GetByIdAsync(long id) => throw new NotImplementedException();
-        public Task<IEnumerable<OrderViewModel>> GetByPhoneAsync(string PhoneNumber) => throw new NotImplementedException();
-        public Task<bool> UpdateAsync(long id, OrderCreateDto createDto) => throw new NotImplementedException();
+        public async Task<string> SendMessageInfoAsync(Order order)
+        {
+            var client = new HttpClient();
+            var phoneNumber = (order.User.PhoneNumber).ToString();
+            if (phoneNumber.Contains("+"))
+            {
+                var numlength = phoneNumber.Count() - 1;
+                phoneNumber = phoneNumber.Substring(1,numlength);
+            }
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri($"https://telesign-telesign-send-sms-verification-code-v1.p.rapidapi.com/sms-verification-code?phoneNumber={phoneNumber}&verifyCode={$"Уважаемый покупатель! Ваша покупка прошла успешно. Спасибо за покупку! \n{order.Product.Name}\n{order.PriceProduct} somoni"}\n{order.MonthKredit} months"),
+                Headers =
+    {
+        { "X-RapidAPI-Key", "8dd0bc996dmsh028b51eae945f4dp10f046jsn6bce713a4eb4" },
+        { "X-RapidAPI-Host", "telesign-telesign-send-sms-verification-code-v1.p.rapidapi.com" },
+    },
+            };
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadAsStringAsync();
+            }
+        }
     }
 }

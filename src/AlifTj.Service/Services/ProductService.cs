@@ -82,6 +82,6 @@ public class ProductService : IProductService
 
         });
     }
+
     public Task<ProductViewModel> GetByIdAsync(long id) => throw new NotImplementedException();
-    public Task<bool> UpdateAsync(long id, ProductCreateDto productCreateDto) => throw new NotImplementedException();
 }
