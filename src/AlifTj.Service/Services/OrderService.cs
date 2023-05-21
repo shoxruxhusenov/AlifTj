@@ -90,7 +90,7 @@ namespace AlifTj.Service.Services
                 }
             }
             else
-                throw new ArgumentException("Произошла ошибка. Выберите что-нибудь другое.");
+                throw new ArgumentException("Пожалуйста, проверьте, правильно ли введен процент <Страница продукта> 3% 4% 5% !!!");
 
 
 
